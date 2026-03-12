@@ -1,7 +1,10 @@
-package train;
+package algorithms;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ReverseMas {
-    public static void reverse_mas(int[] mas) {
+    public static void reverseList(int[] mas) {
         int start = 0;
         int end = mas.length - 1;
         System.out.println("R");
@@ -13,5 +16,8 @@ public class ReverseMas {
             end--;
         }
 
+    }
+    public static void reverseListByStreamApi(int[] mas){
+        return Collections.reverse(mas);
     }
 }

@@ -1,10 +1,9 @@
-package train;
+package algorithms;
 
-import java.util.Collections;
 import java.util.Arrays;
 
-public class sorting {
-    public static void bubble_sort(int[] mas) {
+public class Sorting {
+    public static void bubbleSort(int[] mas) {
         if (mas.length == 0) return;
         for(int i = 0;i < mas.length;i++)
         {
@@ -17,10 +16,10 @@ public class sorting {
             }
         }
     }
-    public static void quick_sort(int[] mas,int low, int high) {
+    public static void quickSort(int[] mas,int low, int high) {
         if (mas.length == 0 || low >= high) return;
 
-        int pivot = mas[low+(high - low)];
+        int pivot = mas[low+(high - low)/2];
 
         int i = low;
         int j = high;
@@ -34,20 +33,18 @@ public class sorting {
                 i++;
                 j--;
             }
-            sorting.quick_sort(mas,low,j);
-            sorting.quick_sort(mas,i,high);
         }
+        Sorting.quickSort(mas,low,j);
+        Sorting.quickSort(mas,i,high);
     }
-    public static void counting_sort(int[] mas) {
+    public static void countingSort(int[] mas) {
         if (mas.length == 0) return;
+
         int max = Arrays.stream(mas).max().getAsInt();
 
         int[] count_mas = new int[max + 1];
         for(int i:mas) {
             count_mas[i]++;
-        }
-        for(int i = 0;i < count_mas.length;i++) {
-            System.out.println(count_mas[i]);
         }
         int index = 0;
         for(int n = 0;n < count_mas.length;n++) {
@@ -57,11 +54,5 @@ public class sorting {
                 index++;
             }
         }
-//		for(int i = 0;i < count_mas.length;i++) {
-//			int count = count_mas(i);
-//			for(int j = 0;j < count;j++) {
-//				mas[index] = i;
-//				index++;
-//			}
     }
 }

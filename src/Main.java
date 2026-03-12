@@ -1,4 +1,9 @@
-package train;
+import algorithms.Remove;
+import algorithms.ReverseMas;
+import algorithms.Sorting;
+import discretemath.PrimeNumber;
+import discretemath.delAndKrat;
+import geometry.Vector;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -50,7 +55,7 @@ public class Main{
         System.out.println("REVERSE");
 
         System.out.println("bbb");
-        sorting.bubble_sort(mas);
+        Sorting.bubble_sort(mas);
         for(int i = 0;i < mas.length;i++) {
             System.out.println(mas[i]);
         }
@@ -65,7 +70,7 @@ public class Main{
         }
         System.out.println("qqqccc");
 
-        sorting.quick_sort(mas,0,mas.length - 1);
+        Sorting.quick_sort(mas,0,mas.length - 1);
 
         for(int i = 0;i < n;i++) {
             System.out.println(i + " " + mas[i]);
@@ -82,7 +87,7 @@ public class Main{
         }
         System.out.println("cscscsmmmm");
 
-        sorting.counting_sort(mas);
+        Sorting.counting_sort(mas);
 
         for(int i = 0;i < n;i++) {
             System.out.println(i + " " + mas[i]);
@@ -91,7 +96,7 @@ public class Main{
         System.out.println("cscs");
 
 
-        ArrayList<Integer> prime = ProstieChisla.prime(mas);
+        ArrayList<Integer> prime = PrimeNumber.prime(mas);
         System.out.println(prime);
 
         System.out.println("ссссс\n");

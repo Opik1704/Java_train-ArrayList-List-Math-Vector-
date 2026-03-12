@@ -1,4 +1,4 @@
-package train;
+package collections;
 
 import java.util.Collection;
 import java.util.Arrays;
@@ -10,7 +10,6 @@ public class MyArrayList<T> {
     private Object[] array = new Object[DEFAULT_SIZE];
     private int size = 0;
     private int real_size = 0;
-
 
     public MyArrayList() {
         this.array = new Object[DEFAULT_SIZE];
@@ -26,27 +25,19 @@ public class MyArrayList<T> {
     }
     public MyArrayList(Collection<? extends T> input_array){
         if(input_array == null) {
-            throw new NullPointerException("Не является коллекцией:");
+            throw new NullPointerException("Не является коллекцией");
         }
         Object[] elements = input_array.toArray();
         if (array.length == 0) {
             this.array = new Object[input_array.size() + DEFAULT_SIZE];
             this.size = input_array.size();
             real_size = array.length;
-//			System.out.println("Kons size1" + size + " real_size " + real_size +" очень рил_size "+ array.length);
-
-//			System.out.println("Konstructor" + size + " " + real_size );
-
         }
         else {
             this.array = Arrays.copyOf(elements, elements.length, Object[].class);
             this.size = input_array.size() + size;
             real_size = array.length;
-//			System.out.println("Kons size 2 " + size + " real_size " + real_size +" очень рил_size "+ array.length);
-
         }
-//		this.array = input_array.toArray();
-
     }
     public int size() {
         return this.size;
@@ -100,11 +91,13 @@ public class MyArrayList<T> {
         }
     }
     public void increaseSize(int minSize) {
-        System.out.println("increase");
-        int newSize = real_size + minSize;
+        int oldSize = array.length;
+        int newSize = real_size + (oldSize >> 1);
         real_size += minSize;
         array = Arrays.copyOf(array,newSize);
+        real_size = array.length;
     }
+
     public void set(int index,T input_el) {
         array[index] = input_el;
     }
@@ -120,7 +113,7 @@ public class MyArrayList<T> {
     @SuppressWarnings("unchecked")
     public boolean remove(Object o){
         for(int i = 0;i < size;i++) {
-            if(array[i] == o) {
+            if(o.equals(array[i])) {
                 System.arraycopy(array,i - 1,array,i + 1,size);
                 return true;
             }

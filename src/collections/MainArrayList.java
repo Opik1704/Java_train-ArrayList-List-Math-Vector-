@@ -1,4 +1,4 @@
-package train;
+package collections;
 
 import java.util.List;
 import java.util.Arrays;
