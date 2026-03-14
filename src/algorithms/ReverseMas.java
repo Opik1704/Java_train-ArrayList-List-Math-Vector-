@@ -2,6 +2,7 @@ package algorithms;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.stream.IntStream;
 
 public class ReverseMas {
     public static void reverseList(int[] mas) {
@@ -17,7 +18,9 @@ public class ReverseMas {
         }
 
     }
-    public static void reverseListByStreamApi(int[] mas){
-        return Collections.reverse(mas);
+    public static int[] reverseListByStreamApi(int[] mas){
+        return IntStream.range(0, mas.length)
+                    .map(i -> mas[mas.length - 1 - i])
+                    .toArray();
     }
 }
