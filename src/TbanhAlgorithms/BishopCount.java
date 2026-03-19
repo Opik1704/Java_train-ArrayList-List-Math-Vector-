@@ -2,19 +2,16 @@ package TbanhAlgorithms;
 import java.util.*;
 
 public class BishopCount {
-    public class Main {
-        static long MOD = 1_000_000_007;
+    static long MOD = 1_000_000_007;
         public static void main(String[] args) {
             Scanner sc = new Scanner(System.in);
             int n = sc.nextInt();
             int k = sc.nextInt();
 
-            if (k > 2 * n - 1) { // Слишком много слонов, они точно будут бить друг друга
+            if (k > 2 * n - 1) {
                 System.out.println(0);
                 return;
             }
-
-            // Длины рядов для двух частей доски
             List<Integer> b1 = new ArrayList<>();
             List<Integer> b2 = new ArrayList<>();
 
@@ -37,18 +34,14 @@ public class BishopCount {
             }
             System.out.println(ans);
         }
-
         static long[] solve(List<Integer> L, int k) {
             int n = L.size();
             long[][] dp = new long[n + 1][k + 1];
             dp[0][0] = 1;
-
             for (int i = 1; i <= n; i++) {
                 int len = L.get(i - 1);
                 for (int j = 0; j <= k; j++) {
-                    // Не ставим слона
                     dp[i][j] = dp[i - 1][j];
-                    // Ставим слона
                     if (j > 0 && len - (j - 1) > 0) {
                         dp[i][j] = (dp[i][j] + dp[i - 1][j - 1] * (len - (j - 1))) % MOD;
                     }
