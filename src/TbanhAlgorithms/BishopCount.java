@@ -50,4 +50,4 @@ public class BishopCount {
             return dp[n];
         }
     }
-}
+
